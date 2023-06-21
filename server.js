@@ -1,8 +1,7 @@
 // TODO: Include packages needed for this application
 const inquirer = require("inquirer");
 const mysql = require("mysql2");
-//const fs = require("fs");
-//const generateMarkdown = require("./utils/generateMarkdown.js");
+const sequelize = require("./config/connection");
 
 // TODO: Create an array of questions for user input
 // Description, Table of Contents, Installation, Usage, License, Contributing, Tests, and Questions
