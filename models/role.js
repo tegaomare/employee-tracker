@@ -13,7 +13,7 @@ Role.init(
     sequelize,
     timestamps: false,
     underscored: true,
-    modelName: "Role",
+    modelName: "role",
   }
 );
 module.exports = Role;
