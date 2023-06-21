@@ -12,7 +12,7 @@ Department.init(
     sequelize,
     timestamps: false,
     underscored: true,
-    modelName: "Department",
+    modelName: "department",
   }
 );
 

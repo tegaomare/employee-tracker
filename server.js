@@ -3,6 +3,10 @@ const inquirer = require("inquirer");
 const mysql = require("mysql2");
 const sequelize = require("./config/connection");
 
+// Import model to sync table with database
+const Department = require("./models/Department");
+const Employee = require("./models/Employee");
+const Role = require("./models/Role");
 // TODO: Create an array of questions for user input
 // Description, Table of Contents, Installation, Usage, License, Contributing, Tests, and Questions
 const options = [
@@ -37,7 +41,7 @@ const handleAnswers = (answers) => {
 
 // TODO: Create a function to initialize app
 function init() {
-  inquirer.prompt(options).then(console.log(options));
+  inquirer.prompt(options).then(Department);
 }
 
 // Function call to initialize app
