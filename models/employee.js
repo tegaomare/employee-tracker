@@ -14,6 +14,7 @@ Employee.init(
     sequelize,
     timestamps: false,
     underscored: true,
-    modelName: "book",
+    modelName: "Employee",
   }
 );
+module.exports = Employee;
