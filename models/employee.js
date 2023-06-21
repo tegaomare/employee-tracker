@@ -14,7 +14,7 @@ Employee.init(
     sequelize,
     timestamps: false,
     underscored: true,
-    modelName: "Employee",
+    modelName: "employee",
   }
 );
 module.exports = Employee;
