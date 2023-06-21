@@ -2,9 +2,9 @@ const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
 
 // Create a new Sequelize model for department
-class department extends Model {}
+class Department extends Model {}
 
-department.init(
+Department.init(
   {
     department_name: DataTypes.STRING(30),
   },
@@ -12,8 +12,8 @@ department.init(
     sequelize,
     timestamps: false,
     underscored: true,
-    modelName: "department",
+    modelName: "Department",
   }
 );
 
-module.exports = department;
+module.exports = Department;
