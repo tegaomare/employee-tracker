@@ -1,5 +1,6 @@
 // TODO: Include packages needed for this application
 const inquirer = require("inquirer");
+const mysql = require("mysql2");
 //const fs = require("fs");
 //const generateMarkdown = require("./utils/generateMarkdown.js");
 
