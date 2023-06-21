@@ -9,6 +9,7 @@ department.init(
     department_name: DataTypes.STRING(30),
   },
   {
+    sequelize,
     timestamps: false,
     underscored: true,
     modelName: "department",
