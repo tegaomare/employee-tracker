@@ -4,9 +4,7 @@ const mysql = require("mysql2");
 const sequelize = require("./config/connection");
 
 // Import model to sync table with database
-//
-// TODO: Create an array of questions for user input
-// Description, Table of Contents, Installation, Usage, License, Contributing, Tests, and Questions
+
 const options = [
   {
     name: "action",
