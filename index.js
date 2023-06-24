@@ -1,7 +1,7 @@
 // TODO: Include packages needed for this application
 const inquirer = require("inquirer");
 const mysql = require("mysql2");
-const sequelize = require("./config/connection");
+const cTable = require("console.table");
 
 //Connecting to database
 const db = mysql.createConnection({
