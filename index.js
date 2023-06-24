@@ -1,5 +1,6 @@
 const inquirer = require("inquirer");
 const mysql = require("mysql2");
+const cTable = require("console.table");
 
 // Connecting to the database
 const db = mysql.createConnection({
@@ -74,29 +75,194 @@ function init() {
 }
 
 function viewAllDepartments() {
-  // Implement the logic to view all departments
+  db.query("SELECT * FROM department", function (err, results) {
+    if (err) {
+      console.error("Error retrieving departments: " + err);
+      return;
+    }
+    // Display the departments
+    console.log("All Departments:");
+    console.table(results);
+    // Return to the main menu
+    init();
+  });
 }
 
 function viewAllRoles() {
-  // Implement the logic to view all roles
+  db.query("SELECT * FROM role", function (err, results) {
+    if (err) {
+      console.error("Error retrieving roles: " + err);
+      return;
+    }
+    // Display the roles
+    console.log("All Roles:");
+    console.table(results);
+    // Return to the main menu
+    init();
+  });
 }
 
 function viewAllEmployees() {
-  // Implement the logic to view all employees
+  db.query("SELECT * FROM employee", function (err, results) {
+    if (err) {
+      console.error("Error retrieving employees: " + err);
+      return;
+    }
+    // Display the employees
+    console.log("All Employees:");
+    console.table(results);
+    // Return to the main menu
+    init();
+  });
 }
 
 function addDepartment() {
-  // Implement the logic to add a department
+  inquirer
+    .prompt([
+      {
+        type: "input",
+        name: "name",
+        message: "Enter the department name:",
+      },
+    ])
+    .then(function (answer) {
+      // Insert the new department into the database
+      db.query(
+        "INSERT INTO department SET ?",
+        { name: answer.name },
+        function (err, result) {
+          if (err) {
+            console.error("Error adding department: " + err);
+            return;
+          }
+          console.log("Department added successfully!");
+          // Return to the main menu
+          init();
+        }
+      );
+    });
 }
 
 function addRole() {
-  // Implement the logic to add a role
+  inquirer
+    .prompt([
+      {
+        type: "input",
+        name: "title",
+        message: "Enter the role title:",
+      },
+      {
+        type: "input",
+        name: "salary",
+        message: "Enter the role salary:",
+      },
+      {
+        type: "input",
+        name: "departmentId",
+        message: "Enter the department ID for the role:",
+      },
+    ])
+    .then(function (answers) {
+      // Insert the new role into the database
+      db.query(
+        "INSERT INTO role SET ?",
+        {
+          title: answers.title,
+          salary: answers.salary,
+          department_id: answers.departmentId,
+        },
+        function (err, result) {
+          if (err) {
+            console.error("Error adding role: " + err);
+            return;
+          }
+          console.log("Role added successfully!");
+          // Return to the main menu
+          init();
+        }
+      );
+    });
 }
 
 function addEmployee() {
-  // Implement the logic to add an employee
+  inquirer
+    .prompt([
+      {
+        type: "input",
+        name: "firstName",
+        message: "Enter the employee's first name:",
+      },
+      {
+        type: "input",
+        name: "lastName",
+        message: "Enter the employee's last name:",
+      },
+      {
+        type: "input",
+        name: "roleId",
+        message: "Enter the role ID for the employee:",
+      },
+      {
+        type: "input",
+        name: "managerId",
+        message: "Enter the manager ID for the employee (optional):",
+      },
+    ])
+    .then(function (answers) {
+      // Insert the new employee into the database
+      db.query(
+        "INSERT INTO employee SET ?",
+        {
+          first_name: answers.firstName,
+          last_name: answers.lastName,
+          role_id: answers.roleId,
+          manager_id: answers.managerId || null,
+        },
+        function (err, result) {
+          if (err) {
+            console.error("Error adding employee: " + err);
+            return;
+          }
+          console.log("Employee added successfully!");
+          // Return to the main menu
+          init();
+        }
+      );
+    });
 }
 
 function updateEmployeeRole() {
-  // Implement the logic to update an employee's role
+  inquirer
+    .prompt([
+      {
+        type: "input",
+        name: "employeeId",
+        message: "Enter the ID of the employee to update:",
+      },
+      {
+        type: "input",
+        name: "roleId",
+        message: "Enter the new role ID for the employee:",
+      },
+    ])
+    .then(function (answers) {
+      // Update the employee's role in the database
+      db.query(
+        "UPDATE employee SET role_id = ? WHERE id = ?",
+        [answers.roleId, answers.employeeId],
+        function (err, result) {
+          if (err) {
+            console.error("Error updating employee role: " + err);
+            return;
+          }
+          if (result.affectedRows === 0) {
+            console.log("Employee not found.");
+          } else {
+            console.log("Employee role updated successfully!");
+          }
+          // Return to the main menu
+          init();
+        }
+      );
+    });
 }
