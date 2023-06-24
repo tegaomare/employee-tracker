@@ -17,62 +17,61 @@ db.connect(function (err) {
   console.log("Connected to business_db");
   init();
 });
-
-const options = [
-  {
-    name: "action",
-    type: "list",
-    message: "What would you like to do?",
-    choices: [
-      "View All Departments",
-      "View All Roles",
-      "View All Employees",
-      "Add A Department",
-      "Add A Role",
-      "Add An Employee",
-      "Update An Employee Role",
-    ],
-  },
-];
 // function to initialize app
 function init() {
-  inquirer.prompt(options).then((answer) => {
-    switch (answer.action) {
-      case "View all departments":
-        viewAllDepartments();
-        break;
-      case "View all roles":
-        viewAllRoles();
+  inquirer
+    .prompt([
+      {
+        type: "list",
+        message: "What would you like to do?",
+        choices: [
+          "View All Departments",
+          "View All Roles",
+          "View All Employees",
+          "Add A Department",
+          "Add A Role",
+          "Add An Employee",
+          "Update An Employee Role",
+        ],
+      },
+    ])
+    .then(function (answer) {
+      switch (answer.choices) {
+        case "View all departments":
+          viewAllDepartments();
+          break;
+        case "View all roles":
+          viewAllRoles();
 
-        break;
-      case "View all employees":
-        viewAllEmployees();
-        break;
-      case "Add a department":
-        addDepartment();
-        break;
-      case "Add a role":
-        addRole();
-        break;
-      case "Add an employee":
-        addEmployee();
-        break;
-      case "Update an employee role":
-        addRole();
-        break;
-      case "View Employees by Manager":
-        viewEmployeesByManager();
-        break;
-      case "Exit":
-        console.log("Exiting the application.");
-        connection.end();
-        break;
-      default:
-        console.log("Invalid choice. Please try again.");
-        init();
-        break;
-    }
-  });
+          break;
+        case "View all employees":
+          viewAllEmployees();
+          break;
+        case "Add a department":
+          addDepartment();
+          break;
+        case "Add a role":
+          addRole();
+          break;
+        case "Add an employee":
+          addEmployee();
+          break;
+        case "Update an employee role":
+          addRole();
+          break;
+        case "View Employees by Manager":
+          viewEmployeesByManager();
+          break;
+        case "Exit":
+          console.log("Exiting the application.");
+          connection.end();
+          break;
+        default:
+          console.log("Invalid choice. Please try again.");
+          init();
+          break;
+      }
+    });
 }
 
 //function to view all employees
