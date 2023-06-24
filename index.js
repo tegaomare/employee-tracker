@@ -41,7 +41,7 @@ function viewAllEmployees() {
     function (err, res) {
       if (err) throw err;
       console.table(res);
-      startPrompts();
+      init();
     }
   );
 }
@@ -53,7 +53,7 @@ function viewAllRoles() {
     function (err, res) {
       if (err) throw err;
       console.table(res);
-      startPrompts();
+      init();
     }
   );
 }
@@ -63,7 +63,7 @@ function viewAllDepartments() {
   db.query("SELECT name AS Departments FROM department;", function (err, res) {
     if (err) throw err;
     console.table(res);
-    startPrompts();
+    init();
   });
 }
 
@@ -121,7 +121,6 @@ function addEmployee() {
       },
     ])
     .then(function (val) {
-      // console.log(val);
       var roleId = selectRole().indexOf(val.role) + 1;
       var managerId = selectManager().indexOf(val.choice) + 1;
       db.query(
@@ -130,10 +129,9 @@ function addEmployee() {
         function (err) {
           if (err) throw err;
           console.table(val);
-          startPrompts();
+          init();
         }
       );
-      // console.log(thequery);
     });
 }
 
