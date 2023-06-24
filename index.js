@@ -34,6 +34,47 @@ const options = [
     ],
   },
 ];
+// function to initialize app
+function init() {
+  inquirer.prompt(options).then((answer) => {
+    switch (answer.action) {
+      case "View all departments":
+        viewAllDepartments();
+        break;
+      case "View all roles":
+        viewAllRoles();
+
+        break;
+      case "View all employees":
+        viewAllEmployees();
+        break;
+      case "Add a department":
+        addDepartment();
+        break;
+      case "Add a role":
+        addRole();
+        break;
+      case "Add an employee":
+        addEmployee();
+        break;
+      case "Update an employee role":
+        addRole();
+        break;
+      case "View Employees by Manager":
+        viewEmployeesByManager();
+        break;
+      case "Exit":
+        console.log("Exiting the application.");
+        connection.end();
+        break;
+      default:
+        console.log("Invalid choice. Please try again.");
+        init();
+        break;
+    }
+  });
+}
+
 //function to view all employees
 function viewAllEmployees() {
   db.query(
@@ -249,45 +290,4 @@ function addDepartment() {
         }
       );
     });
-}
-
-// function to initialize app
-function init() {
-  inquirer.prompt(options).then((answer) => {
-    switch (answer.action) {
-      case "View all departments":
-        viewAllDepartments();
-        break;
-      case "View all roles":
-        viewAllRoles();
-
-        break;
-      case "View all employees":
-        viewAllEmployees();
-        break;
-      case "Add a department":
-        addDepartment();
-        break;
-      case "Add a role":
-        addRole();
-        break;
-      case "Add an employee":
-        addEmployee();
-        break;
-      case "Update an employee role":
-        addRole();
-        break;
-      case "View Employees by Manager":
-        viewEmployeesByManager();
-        break;
-      case "Exit":
-        console.log("Exiting the application.");
-        connection.end();
-        break;
-      default:
-        console.log("Invalid choice. Please try again.");
-        init();
-        break;
-    }
-  });
 }
