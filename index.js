@@ -35,8 +35,8 @@ function init() {
         ],
       },
     ])
-    .then(function (answer) {
-      switch (answer.choices) {
+    .then(function (val) {
+      switch (val.choice) {
         case "View all departments":
           viewAllDepartments();
           break;
@@ -58,9 +58,6 @@ function init() {
           break;
         case "Update an employee role":
           addRole();
-          break;
-        case "View Employees by Manager":
-          viewEmployeesByManager();
           break;
         case "Exit":
           console.log("Exiting the application.");
