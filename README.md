@@ -11,6 +11,7 @@ The Business Management App is a command-line application that allows users to m
 - [Features](#features)
 - [Contributing](#contributing)
 - [License](#license)
+- [Credits](#credits)
 
 ## Installation
 
@@ -43,3 +44,9 @@ Contributions to the Business Management App are welcome! If you have any ideas,
 ## License
 
 This project is licensed under the [MIT License](LICENSE).
+
+## Credits
+
+Columbia University Coding Bootcamp
+
+https://github.com/branchwag/emptrackerapp
