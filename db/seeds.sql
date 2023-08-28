@@ -26,9 +26,9 @@ VALUE ("Bankruptcy Court", 200000, 4);
 
 -- EMPLOYEE SEEDS -------
 INSERT INTO employee (first_name, last_name, manager_id, role_id)
-VALUE ("Normani", "White", 3, 1);
+VALUE ("Normani", "White", null, 1);
 INSERT INTO employee (first_name, last_name, manager_id, role_id)
-VALUE ("Maya", "Rose", 5, 2);
+VALUE ("Maya", "Rose", null, 2);
 INSERT INTO employee (first_name, last_name, manager_id, role_id)
 VALUE ("Daniel", "Omare", null,3 );
 INSERT INTO employee (first_name, last_name, manager_id, role_id)
