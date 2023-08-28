@@ -1,5 +1,7 @@
 ## Business Management App
+<img src="./images/terminalimg.png" href="image of the terminal">
 
+## Description 
 The Business Management App is a command-line application that allows users to manage departments, roles, and employees of a business. It provides an interface to view, add, and update data in a MySQL database.
 
 ## Table of Contents
